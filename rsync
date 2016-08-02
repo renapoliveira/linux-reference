@@ -5,7 +5,7 @@ rsync -avzhP user@192.168.1.1:/remotedir/ /localdir/
 
 #Sync from a local directory to a remote Directory
 
-rsync -avzhP /localdir/ user@192.168.1.1:/remotedir/
+rsync -avzhP /localdir/ user@192.168.1.1:"'/remote dir with spaces example/'"
 
 
 #Rsync over SSH
