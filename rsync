@@ -12,6 +12,10 @@ rsync -avzhP /localdir/ user@192.168.1.1:/remotedir/
 
 rsync -avzhP -e ssh user@192.168.1.1:/remotedir/ /localdir/
 
+#Rsync + Trickle - Controlling the bandwitdh
+
+rsync -avzhP --rsh="trickle -d 500 -u 500 ssh" user@192.168.1.1:/remotedir/ /localdir/
+
 
 -a, It is a quick way of saying you want recursion and want to preserve almost everything.
 -v, Verbose.
@@ -20,3 +24,6 @@ rsync -avzhP -e ssh user@192.168.1.1:/remotedir/ /localdir/
 -P, The  -P  option is equivalent to --partial --progress.  Its purpose is to make it much easier to specify these two options  for a long transfer that may be interrupted.
 -e, --rsh=COMMAND, This option allows you to choose  an  alternative  remote  shell program  to  use  for communication between the local and remote copies of rsync. Typically, rsync is configured to use ssh by default, but you may prefer to use rsh on a local network.
 
+*trickle
+	-d 500 (download max 500k)
+	-u 500 (upload max 500k)
