@@ -2,7 +2,7 @@ CUT
 
 #Get all users in the system, sort and show them
 cut -d: -f1 < /etc/passwd | sort | xargs echo
-cat /etc/passwd | cut -d : -f 1 | xargs echo
+cat /etc/passwd | cut -d : -f 1 | sort | xargs echo
 
 -d - delimiter
 -f - Field number
