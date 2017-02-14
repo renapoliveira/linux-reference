@@ -1,6 +1,6 @@
-Using tar
+TAR
 
-Extract
+#Extract
 
 tar -zxvf file
 -z, --gzip, --gunzip --ungzip
@@ -8,7 +8,7 @@ tar -zxvf file
 -v, --verbose
 -f, --file ARCHIVE
 
-List contents
+#List contents
 
 tar -tvf file
 -t, --list

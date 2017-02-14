@@ -1,3 +1,5 @@
+RSYNC
+
 #Sync from a remote Directory to a Local Machine
 
 rsync -avzhP user@192.168.1.1:/remotedir/ /localdir/

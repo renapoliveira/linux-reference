@@ -1,6 +1,6 @@
 CURL
 
-Download multiple consecutive numbered files
+#Download multiple consecutive numbered files
 curl -O -f -L http://192.168.1.126/bash/file[1-10].log
 curl -O -f -L http://192.168.1.126/bash/file[001-011].log
 
@@ -8,7 +8,7 @@ curl -O -f -L http://192.168.1.126/bash/file[001-011].log
 -f, --fail - Fail  silently (no output at all) on server errors.
 -L, --location - if the server reports that the requested page has moved to a different location this option will make curl redo the request on the new place.
 
-Resume Download
+#Resume Download
 curl -O -L -C - http://192.168.1.1/Test-4.11.iso
 curl -O -L --noproxy '*' -C - http://192.168.1.1/Test-4.11.iso
 
