@@ -1,5 +1,18 @@
 # TAR
 
+Compress using xz.
+
+    tar -cJvf file.tar.xz file/dir
+
+>-c, --create
+
+>-J, --xz
+
+>-v, --verbose
+
+>-f, --file ARCHIVE
+
+----
 Compress using gzip.
 
     tar -czvf file.tar.gz file/dir
@@ -20,6 +33,19 @@ Compress using bzip2.
 >-c, --create
 
 >-j, --bzip2
+
+>-v, --verbose
+
+>-f, --file ARCHIVE
+
+----
+Extract xz file.
+
+    tar -xJvf file.tar.xz
+
+>-x, --extract, --get
+
+>-J, --xz
 
 >-v, --verbose
 
