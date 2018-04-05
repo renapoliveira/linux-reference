@@ -28,7 +28,7 @@ Compress using bzip2.
 ----
 Extract gzip file.
 
-    tar -xzvf file
+    tar -xzvf file.tar.gz
 
 >-x, --extract, --get
 
@@ -41,7 +41,7 @@ Extract gzip file.
 ----
 Extract bzip2 file.
 
-    tar -xjvf file
+    tar -xjvf file.tar.bz2
 
 >-x, --extract, --get
 
