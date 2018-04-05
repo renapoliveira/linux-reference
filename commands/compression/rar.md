@@ -20,11 +20,11 @@ Extract.
 
    rar x file.rar
 
->-x , Extract files with full path.
+>x , Extract files with full path.
 
     rar e file.rar
 
->-e, Extract files to current directory. Does not create any subdirectories
+>e, Extract files to current directory. Does not create any subdirectories
 
 ----
 List contents.
