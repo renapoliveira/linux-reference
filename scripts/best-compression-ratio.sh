@@ -14,9 +14,9 @@ then
     exit 1
 fi
 
-if [[ -d ${INPUT} ]]; then
+if [ -d ${INPUT} ]; then
     PARAM="-r"
-elif [[ -f ${INPUT} ]]; then
+elif [ -f ${INPUT} ]; then
     PARAM=""
 else
     echo "${INPUT} is not valid"
@@ -87,7 +87,7 @@ else
     echo "ZIP is not installed"
 fi
 
-SMALLER=`find . -maxdepth 1 -name "bcr-compressed.*" -printf '%s %p\n' | sort -n | head -n 1 | cut -d " " -f 2`
+SMALLEST=`find . -maxdepth 1 -name "bcr-compressed.*" -printf '%s %p\n' | sort -n | head -n 1 | cut -d " " -f 2`
 
-echo ""; echo ${SMALLER} "presented the best compression ratio, keeping it and removing the other ones."; echo ""
-find . -maxdepth 1 -name "bcr-compressed.*" -printf '%p\n' | grep -v ${SMALLER} | xargs rm -f
+echo ""; echo ${SMALLEST} "presented the best compression ratio, keeping it and removing the other ones."; echo ""
+find . -maxdepth 1 -name "bcr-compressed.*" -printf '%p\n' | grep -v ${SMALLEST} | xargs rm -f
