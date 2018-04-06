@@ -44,11 +44,16 @@ then
     tar -cjf ${OUTPUT}${EXT} ${INPUT}
     echo ${OUTPUT}${EXT}" size is" `find -name ${OUTPUT}${EXT} -printf '%s'`
 
-    #XZ (replacing lzma https://tukaani.org/lzma/)
-    EXT="tar.xz"
-    echo "Compressing xz..."
-    tar -cJf ${OUTPUT}${EXT} ${INPUT}
-    echo ${OUTPUT}${EXT}" size is" `find -name ${OUTPUT}${EXT} -printf '%s'`
+    if [ `command -v xz` ]
+    then
+	    #XZ (replacing lzma https://tukaani.org/lzma/)
+	    EXT="tar"
+	    echo "Compressing xz..."
+	    tar -cf ${OUTPUT}${EXT} ${INPUT} ; xz -9 --extreme ${OUTPUT}${EXT}
+	    echo ${OUTPUT}${EXT}".xz size is" `find -name ${OUTPUT}${EXT}.xz -printf '%s'`
+    else
+        echo "XZ is not installed"
+    fi
 else
     echo "TAR is not installed"
 fi
