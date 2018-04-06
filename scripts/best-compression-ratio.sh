@@ -1,10 +1,10 @@
 #!/bin/bash
-#This script will compress a file or directory in multiple compression types and keep the generated file with the best compression ratio
+#This script compresses a file or directory in multiple compression types and keeps the generated file with the best compression ratio
 
 INPUT=$1
-OUTPUT="compressed."
+OUTPUT="bcr-compressed."
 
-rm -rf compressed.*
+rm -rf bcr-compressed.*
 
 if [ -z ${INPUT} ]
 then
@@ -69,7 +69,7 @@ then
     #7Z
     EXT="7z"
     echo "Compressing 7z..."
-    7z a compressed.7z ${OUTPUT}${EXT} ${INPUT} &> /dev/null
+    7z a bcr-compressed.7z ${OUTPUT}${EXT} ${INPUT} &> /dev/null
     echo ${OUTPUT}${EXT}" size is" `find -name ${OUTPUT}${EXT} -printf '%s'`
 else
     echo "7Z is not installed"
@@ -81,13 +81,13 @@ then
     EXT="zip"
     echo "Compressing zip..."
     7z a ${OUTPUT}${EXT} ${INPUT} &> /dev/null
-    zip -q ${PARAM} compressed.zip ${INPUT}
+    zip -q ${PARAM} bcr-compressed.zip ${INPUT}
     echo ${OUTPUT}${EXT}" size is" `find -name ${OUTPUT}${EXT} -printf '%s'`
 else
     echo "ZIP is not installed"
 fi
 
-SMALLER=`find . -maxdepth 1 -name "compressed.*" -printf '%s %p\n' | sort -n | head -n 1 | cut -d " " -f 2`
+SMALLER=`find . -maxdepth 1 -name "bcr-compressed.*" -printf '%s %p\n' | sort -n | head -n 1 | cut -d " " -f 2`
 
 echo ""; echo ${SMALLER} "presented the best compression ratio, keeping it and removing the other ones."; echo ""
-find . -maxdepth 1 -name "compressed.*" -printf '%p\n' | grep -v ${SMALLER} | xargs rm -f
+find . -maxdepth 1 -name "bcr-compressed.*" -printf '%p\n' | grep -v ${SMALLER} | xargs rm -f
