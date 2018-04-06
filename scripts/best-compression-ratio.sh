@@ -69,7 +69,7 @@ then
     #7Z
     EXT="7z"
     echo "Compressing 7z..."
-    7z a bcr-compressed.7z ${OUTPUT}${EXT} ${INPUT} &> /dev/null
+    7z a -mx=9 bcr-compressed.7z ${OUTPUT}${EXT} ${INPUT} &> /dev/null
     echo ${OUTPUT}${EXT}" size is" `find -name ${OUTPUT}${EXT} -printf '%s'`
 else
     echo "7Z is not installed"
