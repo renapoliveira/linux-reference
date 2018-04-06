@@ -27,30 +27,33 @@ fi
 #TAR
 if [ `command -v tar` ]
 then
+        EXT="tar"
     if [ `command -v gzip` ]
     then
         #GUNZIP (with best compression rate)
-        EXT="tar"
         echo "Compressing gunzip..."
-        tar -cf ${OUTPUT}${EXT} $INPUT ; gzip --best -f ${OUTPUT}${EXT}
+        tar -cf ${OUTPUT}${EXT} $INPUT ; gzip -9 -f ${OUTPUT}${EXT}
         echo ${OUTPUT}${EXT}".gz size is" `find -name ${OUTPUT}${EXT}.gz -printf '%s'`
     else
         echo "GUNZIP is not installed"
     fi
 
-    #BZIP2
-    EXT="tar.bz2"
-    echo "Compressing bzip2..."
-    tar -cjf ${OUTPUT}${EXT} ${INPUT}
-    echo ${OUTPUT}${EXT}" size is" `find -name ${OUTPUT}${EXT} -printf '%s'`
+    if [ `command -v bzip2` ]
+    then
+	#BZIP2 (with best compression rate)
+	echo "Compressing bzip2..."
+	tar -cf ${OUTPUT}${EXT} ${INPUT} ; bzip2 -9 ${OUTPUT}${EXT}
+	echo ${OUTPUT}${EXT}".bz2 size is" `find -name ${OUTPUT}${EXT}.bz2 -printf '%s'`
+    else
+        echo "BZIP2 is not installed"
+    fi
 
     if [ `command -v xz` ]
     then
-	    #XZ (replacing lzma https://tukaani.org/lzma/)
-	    EXT="tar"
-	    echo "Compressing xz..."
-	    tar -cf ${OUTPUT}${EXT} ${INPUT} ; xz -9 --extreme ${OUTPUT}${EXT}
-	    echo ${OUTPUT}${EXT}".xz size is" `find -name ${OUTPUT}${EXT}.xz -printf '%s'`
+        #XZ (Running in best and extreme mode) (replacing lzma https://tukaani.org/lzma/)
+        echo "Compressing xz..."
+        tar -cf ${OUTPUT}${EXT} ${INPUT} ; xz -9 --extreme ${OUTPUT}${EXT}
+        echo ${OUTPUT}${EXT}".xz size is" `find -name ${OUTPUT}${EXT}.xz -printf '%s'`
     else
         echo "XZ is not installed"
     fi
