@@ -1,6 +1,6 @@
 # TAR
 
-Compress using xz.
+Fast compression using xz (level -6).
 
     tar -cJvf file.tar.xz file/dir
 
@@ -13,7 +13,20 @@ Compress using xz.
 >-f, --file ARCHIVE
 
 ----
-Compress using gzip.
+Best xz compression (level -9e).
+
+    tar -cvf file.tar file/dir ; xz -9e file.tar
+
+>-c, --create
+
+>-v, --verbose
+
+>-f, --file ARCHIVE
+
+>-9e, -9 preset level, --extreme
+
+----
+Compress using gzip (level -6).
 
     tar -czvf file.tar.gz file/dir
 
@@ -26,7 +39,20 @@ Compress using gzip.
 >-f, --file ARCHIVE
 
 ----
-Compress using bzip2.
+Best gzip compression (level -9).
+
+    tar -cvf file.tar file/dir ; gzip -9 file.tar
+
+>-c, --create
+
+>-v, --verbose
+
+>-f, --file ARCHIVE
+
+>-9, -9 preset level
+
+----
+Compress using bzip2 ()level -6.
 
     tar -cjvf file.tar.bz2 file/dir
 
@@ -37,6 +63,19 @@ Compress using bzip2.
 >-v, --verbose
 
 >-f, --file ARCHIVE
+
+----
+Best bzip2 compression (level -9).
+
+    tar -cvf file.tar file/dir ; bzip2 -9 file.tar
+
+>-c, --create
+
+>-v, --verbose
+
+>-f, --file ARCHIVE
+
+>-9, -9 preset level
 
 ----
 Extract xz file.
