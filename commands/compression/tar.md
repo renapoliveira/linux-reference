@@ -52,7 +52,7 @@ Best gzip compression (level -9).
 >-9, -9 preset level
 
 ----
-Compress using bzip2 ()level -6.
+Compress using bzip2 (level -6).
 
     tar -cjvf file.tar.bz2 file/dir
 
